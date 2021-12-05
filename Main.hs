@@ -4,6 +4,7 @@ import Day1(runDay1)
 import Day2(day2)
 import Day3(day3)
 import Day4(day4)
+import Day5(day5)
 
 main :: IO ()
 main = do
@@ -18,4 +19,7 @@ main = do
     _ <- putStrLn "Day 4"
     input4 <- readFile "day4.input"
     _ <- print $ day4 input4
+    _ <- putStrLn "Day 5"
+    input5 <- readFile "day5.input"
+    _ <- print $ day5 input5
     return ()
