@@ -25,7 +25,7 @@ fuel2 :: Int -> [Int] -> Int
 fuel2 x = sum . (fmap (\n -> oneFuel . abs $ x - n))
 
 oneFuel :: Int -> Int
-oneFuel x = sum [1 .. x]
+oneFuel x = (x + 1) * x `div` 2
 
 day7 :: String -> (Int, Int)
 day7 input = (fuel m list, fuel2 a list)
