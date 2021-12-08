@@ -7,6 +7,7 @@ import Day4(day4)
 import Day5(day5)
 import Day6(day6)
 import Day7(day7)
+import Day8(day8)
 
 main :: IO ()
 main = do
@@ -30,4 +31,7 @@ main = do
     _ <- putStrLn "Day 7"
     input7 <- readFile "day7.input"
     _ <- print $ day7 input7
+    _ <- putStrLn "Day 8"
+    input8 <- readFile "day8.input"
+    _ <- print $ day8 input8
     return ()
