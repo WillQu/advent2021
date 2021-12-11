@@ -1,16 +1,9 @@
-module Day1(runDay1) where
+module Day1 (day1) where
 
-runDay1 :: IO ()
-runDay1 = do
-        input <- readFile "day1.input"
-        putStrLn . solve $ input
-        putStrLn . solve2 $ input
-
-solve :: String -> String
-solve = show . count . parse
-
-solve2 :: String -> String
-solve2 = show . count2 . parse
+day1 :: String -> (Int, Int)
+day1 string = (count input, count2 input)
+    where
+        input = parse string
 
 parse :: String -> [Int]
 parse input = map read $ lines input

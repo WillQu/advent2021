@@ -1,6 +1,8 @@
 module Main where
 
-import Day1(runDay1)
+import System.Directory
+
+import Day1(day1)
 import Day2(day2)
 import Day3(day3)
 import Day4(day4)
@@ -13,33 +15,25 @@ import Day10(day10)
 
 main :: IO ()
 main = do
-    _ <- putStrLn "Day 1"
-    _ <- runDay1
-    _ <- putStrLn "Day 2"
-    input2 <- readFile "day2.input"
-    _ <- print $ day2 input2
-    _ <- putStrLn "Day 3"
-    input3 <- readFile "day3.input"
-    _ <- print $ day3 input3
-    _ <- putStrLn "Day 4"
-    input4 <- readFile "day4.input"
-    _ <- print $ day4 input4
-    _ <- putStrLn "Day 5"
-    input5 <- readFile "day5.input"
-    _ <- print $ day5 input5
-    _ <- putStrLn "Day 6"
-    input6 <- readFile "day6.input"
-    _ <- print $ day6 input6
-    _ <- putStrLn "Day 7"
-    input7 <- readFile "day7.input"
-    _ <- print $ day7 input7
-    _ <- putStrLn "Day 8"
-    input8 <- readFile "day8.input"
-    _ <- print $ day8 input8
-    _ <- putStrLn "Day 9"
-    input9 <- readFile "day9.input"
-    _ <- print $ day9 input9
-    _ <- putStrLn "Day 10"
-    input10 <- readFile "day10.input"
-    _ <- print $ day10 input10
+    _ <- dayN 1 day1
+    _ <- dayN 2 day2
+    _ <- dayN 3 day3
+    _ <- dayN 4 day4
+    _ <- dayN 5 day5
+    _ <- dayN 6 day6
+    _ <- dayN 7 day7
+    _ <- dayN 8 day8
+    _ <- dayN 9 day9
+    _ <- dayN 10 day10
     return ()
+
+dayN :: Show a => Int -> (String -> a) -> IO ()
+dayN dayNb solution = do
+    let file = "day" ++ show dayNb ++ ".input" 
+    fileExists <- doesFileExist file
+    if not fileExists
+        then putStrLn $ "No input for day " ++ show dayNb
+        else do
+            input <- readFile file
+            _ <- putStrLn $ "Day " ++ show dayNb
+            print $ solution input
