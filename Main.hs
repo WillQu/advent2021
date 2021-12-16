@@ -17,6 +17,7 @@ import Day12(day12)
 import Day13(day13)
 import Day14(day14)
 import Day15(day15)
+import Day16(day16)
 
 main :: IO ()
 main = do
@@ -35,6 +36,7 @@ main = do
     _ <- dayN 13 day13
     _ <- dayN 14 day14
     _ <- dayN 15 day15
+    _ <- dayN 16 day16
     return ()
 
 dayN :: Show a => Int -> (String -> a) -> IO ()
