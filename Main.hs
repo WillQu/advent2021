@@ -19,6 +19,7 @@ import Day14(day14)
 import Day15(day15)
 import Day16(day16)
 import Day17(day17)
+import Day18(day18)
 
 main :: IO ()
 main = do
@@ -39,6 +40,7 @@ main = do
     _ <- dayN 15 day15
     _ <- dayN 16 day16
     _ <- dayN 17 day17
+    _ <- dayStringN 18 day18
     return ()
 
 dayN :: Show a => Int -> (String -> a) -> IO ()
@@ -51,3 +53,14 @@ dayN dayNb solution = do
             input <- readFile file
             _ <- putStrLn $ "Day " ++ show dayNb
             print $ solution input
+
+dayStringN :: Int -> (String -> String) -> IO ()
+dayStringN dayNb solution = do
+    let file = "day" ++ show dayNb ++ ".input" 
+    fileExists <- doesFileExist file
+    if not fileExists
+        then putStrLn $ "No input for day " ++ show dayNb
+        else do
+            input <- readFile file
+            _ <- putStrLn $ "Day " ++ show dayNb
+            putStrLn $ solution input
